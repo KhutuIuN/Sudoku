@@ -1,4 +1,4 @@
-abstract class Controller {
+class Controller {
 
 
     public boolean columnControl(String[][] table, int collum, String hint) {

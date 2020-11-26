@@ -4,17 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SudokuCreater extends Controller {
+
     private String[][] puzzle = new String[9][9];
     Map<Boolean, String[][]> map = new HashMap<>();
-
-
-    public void fillTableWithZero(String[][] puzzle) {
+    
+    private void fillTableWithZero(String[][] puzzle) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 puzzle[i][j] = "0";
             }
         }
-
     }
 
     public void fillKeys(ArrayList<String> hints) {
@@ -35,6 +34,7 @@ public class SudokuCreater extends Controller {
         for (int i = 0; i < 9; i++) {
             System.arraycopy(puzzle[i], 0, temp[i], 0, 9);
         }
+
         SudokuSolver solver = new SudokuSolver(temp);
         if (solver.solveSudoku())
             map.put(true, temp);
@@ -64,14 +64,14 @@ public class SudokuCreater extends Controller {
                 numberOfHints++;
 
             }
-            if (numberOfHints == 23 && (isSolvable(puzzle).isEmpty())) {
+            if (numberOfHints == 18 && (isSolvable(puzzle).isEmpty())) {
                 numberOfHints = 0;
                 fillTableWithZero(puzzle);
 
 
             }
 
-        } while (numberOfHints != 23);
+        } while (numberOfHints != 18);
 
 
         return puzzle;
@@ -96,6 +96,3 @@ public class SudokuCreater extends Controller {
         }
     }
 }
-
-
-

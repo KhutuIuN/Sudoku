@@ -16,7 +16,6 @@ public class SudokuSolver extends Controller {
             for (int col = 0; col < 9; col++) {
                 if (puzzle[row][col].equals("0")) {
 
-
                     for (int index = 0; index < 9; index++) {
                         if (isAllowed(puzzle,row,col,hints.get(index))){
                             puzzle[row][col] = hints.get(index);
